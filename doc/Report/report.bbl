@@ -1,0 +1,13 @@
+\begin{thebibliography}{1}
+
+\bibitem{nag}
+The Numerical Algorithms Group~Ltd. 2022.
+\newblock Introduction to
+  optimization-https://www.nag.com/numeric/nl/nagdoc\_latest/flhtml/e04/e04intro.html\#background.
+
+\bibitem{googletest}
+GoogleTest.
+\newblock Assertions -
+  https://google.github.io/googletest/primer.html\#assertions.
+
+\end{thebibliography}

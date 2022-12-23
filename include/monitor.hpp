@@ -1,3 +1,9 @@
+// info@stce.rwth-aachen.de
+// C++ UI design for NAG Optimization Modelling Suite
+// Group 6: Tran, Man Khang; Feldman, Maksim; Valiyev, Ziya; Korkin, Konstantin; Huang, Yifei
+// Superviser: Lotz, Johannes
+
+/*! File include data type f77_integer used in this class. */
 #include "e04/nagcpp_class_CommE04RA.hpp"
 
 namespace nagcpp

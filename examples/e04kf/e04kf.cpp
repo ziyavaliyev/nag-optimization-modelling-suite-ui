@@ -1,3 +1,8 @@
+// info@stce.rwth-aachen.de
+// C++ UI design for NAG Optimization Modelling Suite
+// Group 6: Tran, Man Khang; Feldman, Maksim; Valiyev, Ziya; Korkin, Konstantin; Huang, Yifei
+// Superviser: Lotz, Johannes
+
 #include "nag_cpp.hpp"
 using namespace std;
 
@@ -7,7 +12,7 @@ using namespace std;
 // Objective function
 auto test_problem = [](auto const &x, auto &y)
 {
-	y = pow(x[0], 2) + pow(x[1], 2) + pow(x[2], 2) + pow(0.5 * x[0] + x[1] + 1.5 * x[2], 2) + pow(0.5 * x[0] + x[1] + 1.5 * x[2], 4);;
+	y = pow(x[0], 2) + pow(x[1], 2);
 };
 
 int main()
@@ -15,10 +20,10 @@ int main()
 	try
 	{
 		// Problem parameter
-		nagcpp::types::f77_integer nvar = 3;
-		std::vector<double> x = {-1, 1.1, 0.228};
-		std::vector<double> b_lower = {-5, -5, -5};
-		std::vector<double> b_upper = {10, 10, 10};
+		nagcpp::types::f77_integer nvar = 2;
+		std::vector<double> x = {-5, 3.9};
+		std::vector<double> b_lower = {-1.0, -2.0};
+		std::vector<double> b_upper = {0.8, 2.0};
 
 		// Problem definition
 		nagcpp::opt::Problem problem(nvar, test_problem);

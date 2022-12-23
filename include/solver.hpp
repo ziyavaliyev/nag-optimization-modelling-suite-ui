@@ -1,8 +1,7 @@
-/*! File including class "Problem", which contains all parameters of the problem itself. */
-#include "problem.hpp"
-
-/*! File including class "MonitorOption", which contains options for the solver. */
-#include "monitor.hpp"
+// info@stce.rwth-aachen.de
+// C++ UI design for NAG Optimization Modelling Suite
+// Group 6: Tran, Man Khang; Feldman, Maksim; Valiyev, Ziya; Korkin, Konstantin; Huang, Yifei
+// Superviser: Lotz, Johannes
 
 /*! Files for creating and managing "handle". */
 #include "e04/nagcpp_class_CommE04RA.hpp"
@@ -25,6 +24,12 @@
 #include "e04/nagcpp_e04mt.hpp"
 #include "e04/nagcpp_e04st.hpp"
 
+/*! File including class "Problem", which contains all parameters of the problem itself. */
+#include "problem.hpp"
+
+/*! File including class "MonitorOption", which contains options for the solver. */
+#include "monitor.hpp"
+
 namespace nagcpp
 {
     namespace opt
@@ -37,11 +42,11 @@ namespace nagcpp
         {
         private:
             //! Arguments for solvers.
-            CommE04RA handle; //!< Main object of problem solving. Contains all information about problem and output.
+            CommE04RA handle;          //!< Main object of problem solving. Contains all information about problem and output.
             std::vector<double> rinfo; //!< Error measures and various indicators at the end of the final iteration.
             std::vector<double> stats; //!< Solver statistics at the end of the final iteration.
-            OptionalE04KF opt; //!< Optional parameter container (for solvers e04kf, e04mt).
-            OptionalE04ST opt_st; //!< Optional parameter container (for solver e04st).
+            OptionalE04KF opt;         //!< Optional parameter container (for solvers e04kf, e04mt).
+            OptionalE04ST opt_st;      //!< Optional parameter container (for solver e04st).
 
             //! Helper vars for monitoring.
             std::stringstream monitoring_buffer;
@@ -81,7 +86,7 @@ namespace nagcpp
             void set_linear_constraints(PROBLEM_T &problem)
             {
                 auto linear_bounds = problem.get_linear_bounds();
-                int ml = linear_bounds.first.size(); //!< Number of linear constraints.
+                int ml = linear_bounds.first.size();                  //!< Number of linear constraints.
                 std::vector<nagcpp::types::f77_integer> irowa, icola; //!< Information about sparse matrix.
 
                 //! Construction of basic sparse matrix.
@@ -113,7 +118,7 @@ namespace nagcpp
             void set_nonlinear_constraints(PROBLEM_T &problem)
             {
                 auto nonlinear_bounds = problem.get_nonlinear_bounds();
-                int mn = nonlinear_bounds.first.size(); //!< Number of nonlinear constraints.
+                int mn = nonlinear_bounds.first.size();               //!< Number of nonlinear constraints.
                 std::vector<nagcpp::types::f77_integer> irowa, icola; //!< Information about sparse matrix.
 
                 //! Construction of basic sparse matrix.
@@ -204,7 +209,7 @@ namespace nagcpp
                 Does not analyze parameters of the problem. Is not recommended for regular usage.
                 Errors can occur, if task have linear and/or nonlinear constraints.
             */
-            template<typename PROBLEM_T>
+            template <typename PROBLEM_T>
             void solve_bounds_foas(PROBLEM_T &problem)
             {
                 apply_monitoring_parameters();
@@ -229,7 +234,7 @@ namespace nagcpp
                 set_simple_constraints(problem);
 
                 handle_solve_bounds_foas(this->handle, problem.get_objfun(), problem.get_objgrd(), nullptr,
-                                        problem.get_initial(), this->rinfo, this->stats, this->opt);
+                                         problem.get_initial(), this->rinfo, this->stats, this->opt);
             }
 
             //! Function for solving problem with explicitly e04mt.
@@ -239,7 +244,7 @@ namespace nagcpp
                 Does not analyze parameters of the problem. Is not recommended for regular usage.
                 Errors can occur, if task have nonlinear objective function and/or nonlinear constraints.
             */
-            template<typename PROBLEM_T>
+            template <typename PROBLEM_T>
             void solve_ip_ipm(PROBLEM_T &problem)
             {
                 apply_monitoring_parameters();
@@ -267,7 +272,7 @@ namespace nagcpp
                 Does not analyze parameters of the problem. Is not recommended for regular usage.
                 Can be ineffective with time and memory.
             */
-            template<typename PROBLEM_T>
+            template <typename PROBLEM_T>
             void solve_ipopt(PROBLEM_T &problem)
             {
                 apply_monitoring_parameters();
@@ -289,8 +294,8 @@ namespace nagcpp
 
                 std::vector<double> u;
                 handle_solve_ipopt(this->handle, problem.get_objfun(), problem.get_objgrd(),
-                                       problem.get_confun(), problem.get_congrd(), problem.get_hess(),
-                                       nullptr, problem.get_initial(), u, this->rinfo, this->stats, this->opt_st);
+                                   problem.get_confun(), problem.get_congrd(), problem.get_hess(),
+                                   nullptr, problem.get_initial(), u, this->rinfo, this->stats, this->opt_st);
             }
 
             //! Function for calling solvers routines.

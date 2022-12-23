@@ -1,25 +1,29 @@
-# NAG Optimization Modelling Suite UI
+# C++ UI design for NAG Optimization Modelling Suite
 
 ## Description
+
 A user-friendly UI made with C++ for use with the NAG optimization modelling suite.
 
 ## How to use
-Read user guide.txt in doc.
-                                    
+
+Refer to userGuide.pdf in /doc.
+
 ## Authors
-Group members:
 
-Tran	Man Khang	khang.tran@rwth-aachen.de
+Group 6:
 
-Feldman	Maksim	    maksim.feldman@rwth-aachen.de
+Tran Man Khang khang.tran@rwth-aachen.de
 
-Valiyev	Ziya	    ziya.valiyev@rwth-aachen.de
+Feldman Maksim     maksim.feldman@rwth-aachen.de
 
-Korkin	Konstantin	konstantin.korkin@rwth-aachen.de
+Valiyev Ziya     ziya.valiyev@rwth-aachen.de
 
-Huang	Yifei	    yifei.huang@rwth-aachen.de
+Korkin Konstantin konstantin.korkin@rwth-aachen.de
 
+Huang Yifei     yifei.huang@rwth-aachen.de
 
 Supervisor:
 
 Lotz, Johannes lotz@stce.rwth-aachen.de
+
+info@stce.rwth-aachen.de

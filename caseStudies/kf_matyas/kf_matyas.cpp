@@ -1,3 +1,8 @@
+// info@stce.rwth-aachen.de
+// C++ UI design for NAG Optimization Modelling Suite
+// Group 6: Tran, Man Khang; Feldman, Maksim; Valiyev, Ziya; Korkin, Konstantin; Huang, Yifei
+// Superviser: Lotz, Johannes
+
 #include "nag_cpp.hpp"
 using namespace std;
 
@@ -7,7 +12,7 @@ using namespace std;
 // Objective function
 auto test_problem = [](auto const &x, auto &y)
 {
-	y = 0.26*(pow(x[0], 2) + pow(x[1], 2)) - 0.48*x[0]*x[1];
+	y = 0.26 * (pow(x[0], 2) + pow(x[1], 2)) - 0.48 * x[0] * x[1];
 };
 
 int main()

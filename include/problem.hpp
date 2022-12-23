@@ -1,3 +1,9 @@
+// info@stce.rwth-aachen.de
+// C++ UI design for NAG Optimization Modelling Suite
+// Group 6: Tran, Man Khang; Feldman, Maksim; Valiyev, Ziya; Korkin, Konstantin; Huang, Yifei
+// Superviser: Lotz, Johannes
+
+/*! Standard libraries". */
 #include <iostream>
 #include <math.h>
 #include <numeric>
@@ -5,10 +11,10 @@
 #include <functional>
 #include <unordered_map>
 
-#define DCO_AUTO_SUPPORT
-#include "dco.hpp"
+/*! File for calculating derivatives". */
 #include "derivative.hpp"
 
+/*! File include data type f77_integer used in this class. */
 #include "e04/nagcpp_class_CommE04RA.hpp"
 
 namespace nagcpp
@@ -24,19 +30,19 @@ namespace nagcpp
         class Problem
         {
         private:
-            LAMBDA_T &var_problem; //!< Objective function in form of lambda function.
+            LAMBDA_T &var_problem;   //!< Objective function in form of lambda function.
             types::f77_integer nvar; //!< Size of variable x.
             types::f77_integer mvar; //!< Amount of nonlinear constraints.
 
-            std::function<void(const std::vector<double> &, double &, types::f77_integer &)> objfun; //!< Objective function in form of std::function.
+            std::function<void(const std::vector<double> &, double &, types::f77_integer &)> objfun;              //!< Objective function in form of std::function.
             std::function<void(const std::vector<double> &, std::vector<double> &, types::f77_integer &)> objgrd; //!< Gradient of the objective function.
 
-            std::vector<double> x_initial; //!< Start values of vector x.
-            std::vector<double> simple_bound_lower, simple_bound_upper; //!< Borders of box constraints.
-            std::vector<double> linear_bound_lower, linear_bound_upper; //!< Borders of linear constraints.
-            std::vector<double> a_matrix; //!< Sparse matrix of linear constraints.
+            std::vector<double> x_initial;                                    //!< Start values of vector x.
+            std::vector<double> simple_bound_lower, simple_bound_upper;       //!< Borders of box constraints.
+            std::vector<double> linear_bound_lower, linear_bound_upper;       //!< Borders of linear constraints.
+            std::vector<double> a_matrix;                                     //!< Sparse matrix of linear constraints.
             std::vector<double> nonlinear_bound_lower, nonlinear_bound_upper; //!< Borders of nonlinear constraints.
-            std::vector<double> lin_coefs; //!< Linear coefficients of objective function, if it is linear.
+            std::vector<double> lin_coefs;                                    //!< Linear coefficients of objective function, if it is linear.
 
             int const LIN_CHECK_N = 20; //!< Amount of points where linearity of function will be checked.
                                         /*!< We check linearity in multiple points, because due to the construction of the function,
@@ -45,10 +51,10 @@ namespace nagcpp
             std::unordered_map<std::string, bool> problem_info; //!< std::map structure of flags with information about defined and undefined parameters.
 
             std::vector<bool> linearity_mask; //!< Information about linear and nonlinear components of nonlinear constraints.
-            int lin_mask_zeroes = 0; //!< Amount of nonlinear components of nonlinear constraints.
+            int lin_mask_zeroes = 0;          //!< Amount of nonlinear components of nonlinear constraints.
 
             std::function<void(const std::vector<double> &, types::f77_integer, std::vector<double> &, types::f77_integer &)> confun; //!< Constraint function in form of std::function.
-            std::function<void(const std::vector<double> &, std::vector<double> &, types::f77_integer &)> congrd; //!< Gradient of the constraint function.
+            std::function<void(const std::vector<double> &, std::vector<double> &, types::f77_integer &)> congrd;                     //!< Gradient of the constraint function.
 
             std::function<void(const std::vector<double> &, const types::f77_integer, const double, const std::vector<double> &,
                                std::vector<double> &, types::f77_integer &)>

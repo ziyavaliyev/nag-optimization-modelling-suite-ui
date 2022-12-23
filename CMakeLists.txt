@@ -1,3 +1,8 @@
+# info@stce.rwth-aachen.de
+# C++ UI design for NAG Optimization Modelling Suite
+# Group 6: Tran, Man Khang; Feldman, Maksim; Valiyev, Ziya; Korkin, Konstantin; Huang, Yifei
+# Superviser: Lotz, Johannes
+
 cmake_minimum_required(VERSION 3.16)
 project(CodeTest)
 
@@ -25,4 +30,3 @@ enable_testing()
 add_subdirectory(examples)
 add_subdirectory(caseStudies)
 add_subdirectory(tests)
-

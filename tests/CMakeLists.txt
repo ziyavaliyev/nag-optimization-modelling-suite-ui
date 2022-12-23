@@ -1,3 +1,8 @@
+# info@stce.rwth-aachen.de
+# C++ UI design for NAG Optimization Modelling Suite
+# Group 6: Tran, Man Khang; Feldman, Maksim; Valiyev, Ziya; Korkin, Konstantin; Huang, Yifei
+# Superviser: Lotz, Johannes
+
 ## Helper macro used below: get all directories in dir.
 macro(get_subdirs dir result)
   file(GLOB children RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}/${dir} ${CMAKE_CURRENT_SOURCE_DIR}/${dir}/*)
